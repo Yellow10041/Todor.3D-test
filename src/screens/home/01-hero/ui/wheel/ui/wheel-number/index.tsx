@@ -19,9 +19,7 @@ export const WheelNumber: FC<IWheelNumber> = ({
     setValue,
 }) => {
     useEffect(() => {
-        {
-            isActive && setValue(wheelID, value)
-        }
+        isActive && setValue(wheelID, value)
     }, [isActive])
 
     return <div className={clsx(styles.WheelNumber)}>{value}</div>
