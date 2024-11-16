@@ -1,0 +1,53 @@
+html {
+    width: 100%;
+
+    &::-webkit-scrollbar {
+        width: 0;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: #fff;
+        border-left: 1px solid #000;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: $c-primary;
+        border: 0px solid #ffffff;
+        border-left: 1px solid #000;
+    }
+}
+
+body {
+    width: 100%;
+    color: $c-primary;
+    font-family: $f-Inter;
+    font-weight: 500;
+    background-color: $c-bg;
+}
+
+// * lenis styles
+html.lenis,
+html.lenis body {
+    height: auto;
+}
+
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+    overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+    pointer-events: none;
+}
+// ! end lenis styles
+
+// * custom for this project
+
+// ! end custom styles
