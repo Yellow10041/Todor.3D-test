@@ -1,5 +1,6 @@
+import {useDebounce} from "@uidotdev/usehooks"
 import clsx from "clsx"
-import {FC, useEffect} from "react"
+import {FC, useEffect, useRef, useState} from "react"
 
 import {TSetValue} from "@/screens/home/01-hero"
 
@@ -18,9 +19,25 @@ export const WheelNumber: FC<IWheelNumber> = ({
     wheelID,
     setValue,
 }) => {
-    useEffect(() => {
-        isActive && setValue(wheelID, value)
-    }, [isActive])
+    const refAudio = useRef<HTMLAudioElement | null>(null)
 
-    return <div className={clsx(styles.WheelNumber)}>{value}</div>
+    const debounceActive = useDebounce(isActive, 10)
+
+    useEffect(() => {
+        if (debounceActive) {
+            debounceActive && setValue(wheelID, value)
+
+            if (!refAudio.current) return
+
+            refAudio.current.currentTime = 0
+            refAudio.current.play()
+        }
+    }, [debounceActive])
+
+    return (
+        <div className={clsx(styles.WheelNumber)}>
+            <audio src="/assets/wheel.mp3" ref={refAudio} />
+            {value}
+        </div>
+    )
 }

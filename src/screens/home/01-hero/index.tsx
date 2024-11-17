@@ -1,7 +1,7 @@
 "use client"
 
 import clsx from "clsx"
-import {FC, useState} from "react"
+import {FC, useRef, useState} from "react"
 
 import styles from "./index.module.scss"
 import {Wheel} from "./ui/wheel"

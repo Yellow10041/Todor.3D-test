@@ -1,7 +1,7 @@
 "use client"
 
 import clsx from "clsx"
-import {Dispatch, FC, SetStateAction, useEffect, useState} from "react"
+import {FC, useEffect, useRef, useState} from "react"
 import {EffectCreative} from "swiper/modules"
 import {Swiper, SwiperSlide} from "swiper/react"
 import {SwiperOptions, Swiper as SwiperType} from "swiper/types"
@@ -18,7 +18,6 @@ interface IWheel {
 
 export const Wheel: FC<IWheel> = ({setValue, index}) => {
     const [swiper, setSwiper] = useState<SwiperType>()
-
     const [swiperConfig, setSwiperConfig] = useState<SwiperOptions>()
 
     useEffect(() => {
