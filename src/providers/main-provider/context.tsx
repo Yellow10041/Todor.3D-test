@@ -6,6 +6,7 @@ import {IModal, useModal} from "@/hooks/useModal"
 
 interface IMainContext {
     modalMenu: IModal
+    modalCase: IModal
 }
 
 export const MainContext = createContext<IMainContext>({} as any)
@@ -18,11 +19,13 @@ interface Props {
 
 export const WithMain: React.FC<Props> = ({children}) => {
     const modalMenu = useModal()
+    const modalCase = useModal()
 
     return (
         <MainContext.Provider
             value={{
                 modalMenu,
+                modalCase,
             }}
         >
             {children}

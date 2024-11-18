@@ -1,18 +1,18 @@
 import clsx from "clsx"
 import type {Metadata} from "next"
-import {Inter} from "next/font/google"
+import {Inter, Manrope} from "next/font/google"
 import "swiper/css"
 
 import {RootLayout} from "layouts/RootLayout"
 
 import "styles/index.scss"
 
-const inter = Inter({
+const manrope = Manrope({
     subsets: ["latin"],
     display: "swap",
 })
 
-const fonts = [inter]
+const fonts = [manrope]
 
 export const metadata: Metadata = {
     title: "Todor.3D-test",

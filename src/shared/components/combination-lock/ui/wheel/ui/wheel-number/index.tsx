@@ -1,8 +1,8 @@
 import {useDebounce} from "@uidotdev/usehooks"
 import clsx from "clsx"
-import {FC, useEffect, useRef, useState} from "react"
+import {FC, useEffect, useRef} from "react"
 
-import {TSetValue} from "@/screens/home/01-hero"
+import {TSetValue} from "shared/components/combination-lock"
 
 import styles from "./index.module.scss"
 
@@ -36,7 +36,7 @@ export const WheelNumber: FC<IWheelNumber> = ({
 
     return (
         <div className={clsx(styles.WheelNumber)}>
-            <audio src="/assets/wheel.mp3" ref={refAudio} />
+            <audio src="/assets/combination-lock/wheel.mp3" ref={refAudio} />
             {value}
         </div>
     )

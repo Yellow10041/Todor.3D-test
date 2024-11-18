@@ -1,0 +1,56 @@
+.ModalCase_title {
+    text-align: center;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 120%;
+}
+
+.ModalCase_text {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 10px;
+
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 137.5%;
+
+    ul {
+        list-style-type: disc;
+        padding-left: 20px;
+    }
+}
+
+.ModalCase_case {
+    height: 125px;
+    margin-top: 24px;
+
+    img {
+        height: 100%;
+        width: auto;
+    }
+}
+
+.ModalCase_lock {
+    margin-top: 30px;
+}
+
+.ModalCase_digits {
+    margin-top: 22px;
+
+    color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 137.5%;
+
+    span {
+        color: #fff;
+    }
+}
+
+.ModalCase_button {
+    width: 100%;
+    margin-top: 24px;
+}

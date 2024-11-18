@@ -1,44 +1,22 @@
 "use client"
 
 import clsx from "clsx"
-import {FC, useRef, useState} from "react"
+import {FC} from "react"
+
+import {useMainContext} from "providers/main-provider"
+
+import {Button} from "shared/components/@button/button"
 
 import styles from "./index.module.scss"
-import {Wheel} from "./ui/wheel"
-
-export type TSetValue = (index: number, value: number) => void
 
 interface IHero {}
 
 export const Hero: FC<IHero> = () => {
-    const [code, setCode] = useState<number[]>([])
-
-    const setValue: TSetValue = (index: number, value: number) => {
-        setCode((prev) => {
-            let newArr = [...prev]
-
-            newArr[index] = value
-
-            return newArr
-        })
-    }
+    const {modalCase} = useMainContext()
 
     return (
         <div className={clsx(styles.Hero)}>
-            <div className={clsx(styles.Hero_code)}>
-                {code.map((e, i) => (
-                    <div className={clsx(styles.Hero_code_item)} key={i}>
-                        {e}
-                    </div>
-                ))}
-            </div>
-            <div className={clsx(styles.Hero_wheels)}>
-                {Array(3)
-                    .fill(null)
-                    .map((_, i) => (
-                        <Wheel setValue={setValue} index={i} key={i} />
-                    ))}
-            </div>
+            <Button onClick={modalCase.open}>Start</Button>
         </div>
     )
 }
