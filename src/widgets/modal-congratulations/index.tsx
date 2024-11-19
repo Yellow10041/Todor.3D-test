@@ -39,7 +39,6 @@ export const ModalCongratulations: FC<IModalCongratulations> = () => {
                         },
                         duration: 2.5,
                         delay: "random(0, 2.5)",
-                        // repeat: -1,
                     },
                 )
 

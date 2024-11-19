@@ -12,16 +12,11 @@ import styles from "./index.module.scss"
 interface IHero {}
 
 export const Hero: FC<IHero> = () => {
-    const {modalCase, modalCongratulations} = useMainContext()
+    const {modalCase} = useMainContext()
 
     return (
         <div className={clsx(styles.Hero)}>
-            <Button
-                onClick={modalCase.open}
-                // onClick={modalCongratulations.open}
-            >
-                Start
-            </Button>
+            <Button onClick={modalCase.open}>Start</Button>
         </div>
     )
 }

@@ -1,7 +1,6 @@
 "use client"
 
 import clsx from "clsx"
-import gsap from "gsap"
 import {FC, useEffect, useState} from "react"
 import {EffectCreative, Mousewheel} from "swiper/modules"
 import {Swiper, SwiperSlide} from "swiper/react"
@@ -40,13 +39,11 @@ export const Wheel: FC<IWheel> = ({setValue, index, reset}) => {
             creativeEffect: {
                 limitProgress: 2,
                 prev: {
-                    // shadow: true,
                     origin: "bottom  center",
                     translate: [0, "-100%", 0],
                     rotate: [50, 0, 0],
                 },
                 next: {
-                    // shadow: true,
                     origin: "top center",
                     translate: [0, "100%", 0],
                     rotate: [-50, 0, 0],
@@ -84,7 +81,7 @@ export const Wheel: FC<IWheel> = ({setValue, index, reset}) => {
                                         )}
                                         key={i}
                                     >
-                                        {({isActive, isVisible}) => (
+                                        {({isActive}) => (
                                             <WheelNumber
                                                 value={i}
                                                 wheelID={index}
