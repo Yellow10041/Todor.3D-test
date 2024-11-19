@@ -1,6 +1,6 @@
 import {useDebounce} from "@uidotdev/usehooks"
 import clsx from "clsx"
-import {FC, useEffect, useRef} from "react"
+import {FC, useEffect} from "react"
 
 import {TSetValue} from "shared/components/combination-lock"
 
