@@ -39,6 +39,15 @@ export const CombinationLock: FC<ICombinationLock> = ({
             })
     }, [])
 
+    useEffect(() => {
+        const initAudio = () => {
+            if (audioContextRef.current?.state === "suspended") {
+                audioContextRef.current.resume() // Активуємо AudioContext
+            }
+        }
+        window.addEventListener("click", initAudio, {once: true})
+    }, [])
+
     const handleAction = () => {
         if (audioContextRef.current && audioBufferRef.current) {
             const source = audioContextRef.current.createBufferSource()
