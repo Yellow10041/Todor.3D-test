@@ -1,0 +1,10 @@
+.ModalTitle {
+    text-align: center;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 120%;
+
+    @media screen and (max-width: $mobile) {
+        font-size: get-m(40px);
+    }
+}

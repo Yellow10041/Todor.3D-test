@@ -1,12 +1,13 @@
 "use client"
 
 import clsx from "clsx"
-import {FC, useEffect, useRef, useState} from "react"
+import gsap from "gsap"
+import {FC, useEffect, useState} from "react"
 import {EffectCreative, Mousewheel} from "swiper/modules"
 import {Swiper, SwiperSlide} from "swiper/react"
 import {SwiperOptions, Swiper as SwiperType} from "swiper/types"
 
-import {TSetValue} from "../../../../../screens/home/01-hero"
+import {TSetValue} from "../.."
 
 import styles from "./index.module.scss"
 import {WheelNumber} from "./ui/wheel-number"
@@ -14,9 +15,10 @@ import {WheelNumber} from "./ui/wheel-number"
 interface IWheel {
     setValue: TSetValue
     index: number
+    reset?: boolean
 }
 
-export const Wheel: FC<IWheel> = ({setValue, index}) => {
+export const Wheel: FC<IWheel> = ({setValue, index, reset}) => {
     const [swiper, setSwiper] = useState<SwiperType>()
     const [swiperConfig, setSwiperConfig] = useState<SwiperOptions>()
 
@@ -38,13 +40,13 @@ export const Wheel: FC<IWheel> = ({setValue, index}) => {
             creativeEffect: {
                 limitProgress: 2,
                 prev: {
-                    shadow: true,
+                    // shadow: true,
                     origin: "bottom  center",
                     translate: [0, "-100%", 0],
                     rotate: [50, 0, 0],
                 },
                 next: {
-                    shadow: true,
+                    // shadow: true,
                     origin: "top center",
                     translate: [0, "100%", 0],
                     rotate: [-50, 0, 0],
@@ -58,6 +60,10 @@ export const Wheel: FC<IWheel> = ({setValue, index}) => {
 
         setSwiperConfig(newSwiperConf)
     }, [])
+
+    useEffect(() => {
+        swiper?.slideToLoop(0)
+    }, [reset])
 
     return (
         <div className={clsx(styles.Wheel)}>

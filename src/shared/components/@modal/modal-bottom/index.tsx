@@ -3,7 +3,7 @@
 import {useGSAP} from "@gsap/react"
 import clsx from "clsx"
 import gsap from "gsap"
-import {FC, PropsWithChildren, useEffect, useRef} from "react"
+import {FC, PropsWithChildren, ReactNode, useEffect, useRef} from "react"
 
 import {Icons} from "shared/icons"
 
@@ -11,11 +11,14 @@ import {IModalWrapper, ModalWrapper} from "../modal-wrapper"
 
 import styles from "./index.module.scss"
 
-interface IModalBottom extends IModalWrapper {}
+interface IModalBottom extends IModalWrapper {
+    Outside?: ReactNode
+}
 
 export const ModalBottom: FC<PropsWithChildren<IModalBottom>> = ({
     modal,
     children,
+    Outside,
 }) => {
     const refRoot = useRef<HTMLDivElement>(null)
 
@@ -52,6 +55,7 @@ export const ModalBottom: FC<PropsWithChildren<IModalBottom>> = ({
             <div className={clsx(styles.ModalBottom)} ref={refRoot}>
                 {children}
             </div>
+            {Outside}
         </ModalWrapper>
     )
 }

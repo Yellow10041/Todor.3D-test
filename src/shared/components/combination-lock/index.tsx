@@ -1,15 +1,23 @@
 import clsx from "clsx"
 import Image from "next/image"
-import {FC, useState} from "react"
+import {Dispatch, FC, SetStateAction, useEffect, useState} from "react"
 
 import styles from "./index.module.scss"
 import {Wheel} from "./ui/wheel"
 
 export type TSetValue = (index: number, value: number) => void
 
-interface ICombinationLock {}
+interface ICombinationLock {
+    setValue?: Dispatch<SetStateAction<number[]>>
+    wheels?: number
+    reset?: boolean
+}
 
-export const CombinationLock: FC<ICombinationLock> = () => {
+export const CombinationLock: FC<ICombinationLock> = ({
+    setValue: setOutValue,
+    wheels = 3,
+    reset = false,
+}) => {
     const [code, setCode] = useState<number[]>([])
 
     const setValue: TSetValue = (index: number, value: number) => {
@@ -21,6 +29,10 @@ export const CombinationLock: FC<ICombinationLock> = () => {
             return newArr
         })
     }
+
+    useEffect(() => {
+        setOutValue && setOutValue(code)
+    }, [code])
 
     return (
         <div className={clsx(styles.CombinationLock)}>
@@ -44,10 +56,15 @@ export const CombinationLock: FC<ICombinationLock> = () => {
                         />
                     ))}
             </div>
-            {Array(3)
+            {Array(wheels)
                 .fill(null)
                 .map((_, i) => (
-                    <Wheel setValue={setValue} index={i} key={i} />
+                    <Wheel
+                        reset={reset}
+                        setValue={setValue}
+                        index={i}
+                        key={i}
+                    />
                 ))}
         </div>
     )

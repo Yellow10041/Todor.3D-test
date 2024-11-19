@@ -1,0 +1,97 @@
+.ModalCase_caseBox {
+    position: relative;
+    height: 223px;
+    margin-top: 24px;
+
+    @media screen and (max-width: $tablet) {
+        width: 100%;
+        height: auto;
+    }
+}
+
+.ModalCase_case {
+    height: 100%;
+    width: auto;
+
+    @media screen and (max-width: $tablet) {
+        width: 100%;
+        height: auto;
+    }
+}
+
+.ModalCase_case_usdt {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    translate: -50%;
+
+    height: 120px;
+    width: auto;
+
+    opacity: 0;
+
+    @media screen and (max-width: $mobile) {
+        height: get-m(120px);
+    }
+}
+
+.ModalCase_confetti {
+    position: absolute;
+    z-index: 100;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.ModalCase_confetti_item {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    translate: -50%;
+
+    height: 20px;
+
+    img {
+        height: 100%;
+        width: auto;
+    }
+}
+
+.ModalCase_reward {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 24px;
+
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 137.5%;
+
+    span {
+        font-size: 24px;
+        font-weight: 900;
+        line-height: 91.667%;
+        @include textGradient(
+            linear-gradient(225deg, #e8a13b 0%, #b05c25 100%)
+        );
+    }
+}
+
+.ModalCase_button {
+    width: 100%;
+    gap: 12px;
+    margin-top: 24px;
+
+    > span {
+        padding-block: 8px 6px;
+        padding-inline: 10px 12px;
+
+        border-radius: 1000px;
+        background: rgba(255, 255, 255, 0.14);
+
+        > span {
+            color: #fff;
+        }
+    }
+}

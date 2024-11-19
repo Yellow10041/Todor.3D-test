@@ -8,6 +8,7 @@ import {RootLayout} from "layouts/RootLayout"
 import "styles/index.scss"
 
 const manrope = Manrope({
+    weight: ["200", "300", "400", "500", "600", "700", "800"],
     subsets: ["latin"],
     display: "swap",
 })

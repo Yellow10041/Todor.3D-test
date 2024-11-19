@@ -3,10 +3,16 @@ $river-padding: 6px;
 .CombinationLock {
     position: relative;
     display: flex;
+    justify-content: center;
     gap: 10px;
     padding: 22px 74px;
 
-    border-radius: 17.232px;
+    border-radius: 18px;
+
+    @media screen and (max-width: $mobile) {
+        width: 100%;
+        padding: 22px;
+    }
 }
 
 .CombinationLock_bg {

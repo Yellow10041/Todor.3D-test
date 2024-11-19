@@ -15,6 +15,7 @@ const libs = [
     // "libs/SplitText.min.js",
     "libs/ScrollTrigger.min.js",
     "libs/DrawSVG.min.js",
+    "libs/Physics2DPlugin3.min.js",
 ]
 
 export const WithGsap: FC<PropsWithChildren<IWithGsapProps>> = ({children}) => {
@@ -33,6 +34,7 @@ export const WithGsap: FC<PropsWithChildren<IWithGsapProps>> = ({children}) => {
                 DrawSVGPlugin,
                 // Draggable,
                 // ScrollToPlugin,
+                Physics2DPlugin,
             )
 
             // ScrollSmoother.create({
