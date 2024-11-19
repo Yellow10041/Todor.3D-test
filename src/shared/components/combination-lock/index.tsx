@@ -26,15 +26,14 @@ export const CombinationLock: FC<ICombinationLock> = ({
     const audioBufferRef = useRef<AudioBuffer | null>(null)
 
     useEffect(() => {
-        // Ініціалізація AudioContext і завантаження файлу
         audioContextRef.current = new (window.AudioContext ||
             (window as any).webkitAudioContext)()
 
-        fetch("/assets/combination-lock/wheel.mp3") // Завантажуємо файл
+        fetch("/assets/combination-lock/wheel.mp3")
             .then((response) => response.arrayBuffer())
             .then((data) => {
                 audioContextRef.current?.decodeAudioData(data, (buffer) => {
-                    audioBufferRef.current = buffer // Зберігаємо аудіо-буфер
+                    audioBufferRef.current = buffer
                 })
             })
     }, [])
@@ -42,7 +41,7 @@ export const CombinationLock: FC<ICombinationLock> = ({
     useEffect(() => {
         const initAudio = () => {
             if (audioContextRef.current?.state === "suspended") {
-                audioContextRef.current.resume() // Активуємо AudioContext
+                audioContextRef.current.resume()
             }
         }
         window.addEventListener("click", initAudio, {once: true})
@@ -53,26 +52,9 @@ export const CombinationLock: FC<ICombinationLock> = ({
             const source = audioContextRef.current.createBufferSource()
             source.buffer = audioBufferRef.current
             source.connect(audioContextRef.current.destination)
-            source.start(0) // Відтворюємо без затримки
+            source.start(0)
         }
     }
-
-    // const handleAction = () => {
-    //     const audio = new Audio("/assets/combination-lock/wheel.mp3")
-    //     audioRef.current = audio
-
-    //     audio.play()
-
-    //     audio.addEventListener("ended", () => {
-    //         audioRef.current = null
-    //         console.log("Audio finished and removed.")
-    //     })
-
-    //     audio.addEventListener("error", (e) => {
-    //         console.error("Audio playback failed:", e)
-    //         audioRef.current = null
-    //     })
-    // }
 
     const setValue: TSetValue = (index: number, value: number) => {
         setCode((prev) => {
