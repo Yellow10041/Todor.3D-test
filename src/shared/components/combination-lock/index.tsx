@@ -1,6 +1,6 @@
 import clsx from "clsx"
 import Image from "next/image"
-import {Dispatch, FC, SetStateAction, useEffect, useState} from "react"
+import {Dispatch, FC, SetStateAction, useEffect, useRef, useState} from "react"
 
 import styles from "./index.module.scss"
 import {Wheel} from "./ui/wheel"
@@ -20,6 +20,25 @@ export const CombinationLock: FC<ICombinationLock> = ({
 }) => {
     const [code, setCode] = useState<number[]>([])
 
+    const audioRef = useRef<HTMLAudioElement | null>(null)
+
+    const handleAction = () => {
+        const audio = new Audio("/assets/combination-lock/wheel.mp3")
+        audioRef.current = audio
+
+        audio.play()
+
+        audio.addEventListener("ended", () => {
+            audioRef.current = null
+            console.log("Audio finished and removed.")
+        })
+
+        audio.addEventListener("error", (e) => {
+            console.error("Audio playback failed:", e)
+            audioRef.current = null
+        })
+    }
+
     const setValue: TSetValue = (index: number, value: number) => {
         setCode((prev) => {
             let newArr = [...prev]
@@ -28,6 +47,8 @@ export const CombinationLock: FC<ICombinationLock> = ({
 
             return newArr
         })
+
+        handleAction()
     }
 
     useEffect(() => {

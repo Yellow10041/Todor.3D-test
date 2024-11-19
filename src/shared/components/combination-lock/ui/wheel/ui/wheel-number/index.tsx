@@ -19,25 +19,13 @@ export const WheelNumber: FC<IWheelNumber> = ({
     wheelID,
     setValue,
 }) => {
-    const refAudio = useRef<HTMLAudioElement | null>(null)
-
     const debounceActive = useDebounce(isActive, 10)
 
     useEffect(() => {
         if (debounceActive) {
             debounceActive && setValue(wheelID, value)
-
-            if (!refAudio.current) return
-
-            refAudio.current.currentTime = 0
-            refAudio.current.play()
         }
     }, [debounceActive])
 
-    return (
-        <div className={clsx(styles.WheelNumber)}>
-            <audio src="/assets/combination-lock/wheel.mp3" ref={refAudio} />
-            {value}
-        </div>
-    )
+    return <div className={clsx(styles.WheelNumber)}>{value}</div>
 }
